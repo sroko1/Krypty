@@ -1,0 +1,18 @@
+Project features:
+- pobieranie aktualnych wartości ze strony
+- pobieranie aktualnych wartości ze strony
+- portfel
+- może logowanie użytkownika
+- transakcje
+- przeliczanie walut
+-  wykresy
+- wyswietlanie TOP/sortowanie
+- maksymalna i minnimalna cena w miesiacu
+- historia
+- alerty
+- zleć kupno lub sprzedaż gdy wartość jest wybrana
+- przełączanie giełd/inne api
+- wiadomości ze świata  
+- wyswietlanie paska z wartościami
+- market research
+- zmiana hasła
