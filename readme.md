@@ -16,3 +16,6 @@ Project features:
 - wyswietlanie paska z wartościami
 - market research
 - zmiana hasła
+- filtry
+- opcja premium
+
