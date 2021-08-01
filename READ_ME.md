@@ -17,17 +17,36 @@
   - https://bittrex.github.io/api/v3
   - https://coinmarketcap.com/api/
   - https://bitbay.net/pl/api-prywatne
-
-- wykresy
+  - dev todo: 5 sda days - 15 sda days
+    - rozpoznanie API
+    - zbudować importer per giełda
+    - entity:
+    - dto
+    - repository
+    - serwis
+    - serwis webowy (thymeleaf)
+    - serwis restowy (dla Angulara)
+    - UI Angular
+  
+- wykresy: 1 - 3 sda days
   - cena - czas
   - rozny kolor w zaleznosci od tego czy jest tendencja spadkowa czy wzrostowa
   - zbudowany slupek od minimalnej do maksymalnej ceny w zaleznosci od interwalu czasowego
-  
+  - dev TODO:
+    - wybór biblioteki
+    - filtrowanie
+    - sortowanie
+    - kontroler
+    - UI Angular
 
-- transakcje
+- transakcje 2 - 4 sda days
   - możliwość przeprowadzania transakcji
   - historia
     - informacje o naszych transakcjach (cena, punkt na osi czasu)
+  - dev TODO:
+    - kontroler
+    - UI Angular
+    - integracja z portfelem
 
 #### REFINEMENT
 - wyswietlanie TOP/sortowanie
