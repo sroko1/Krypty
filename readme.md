@@ -1,4 +1,5 @@
 Project features:
+- lets go
 - pobieranie aktualnych wartości ze strony
 - pobieranie aktualnych wartości ze strony
 - portfel
