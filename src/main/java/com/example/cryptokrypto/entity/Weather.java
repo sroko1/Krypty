@@ -1,6 +1,7 @@
 package com.example.cryptokrypto.entity;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -12,6 +13,7 @@ import javax.persistence.Id;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
+@Builder
 public class Weather {
 
     @Id
@@ -20,5 +22,5 @@ public class Weather {
 
     private String city;
 
-    private String temperatureInCelsius;
+    private Long temperatureInCelsius;
 }
