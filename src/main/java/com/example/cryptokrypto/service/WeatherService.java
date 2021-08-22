@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -34,5 +35,13 @@ public class WeatherService {
                 .stream() // Stream<Weather>
                 .map(weather -> mapper.fromEntityToDto(weather)) // Stream<WeatherDto>
                 .collect(Collectors.toList());
+    }
+
+    public Optional<WeatherDto> findWeatherById(Long id) {
+        var result = weatherRepository.findById(id)
+                .map(weather -> mapper.fromEntityToDto(weather));
+
+        log.info("trying to find object by id: [{}], result: [{}]", id, result);
+        return result;
     }
 }
