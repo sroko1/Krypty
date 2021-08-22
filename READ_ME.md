@@ -85,3 +85,17 @@ Service
 
 Repository
 - data management
+
+#### Restfull (CRUD on Http)
+- resource has URI
+- Read - GET
+- Create - POST
+- Delete - DELETE
+- Update - PUT (replace), PATCH (partial update)
+
+#### Http Response codes
+- 1xx - processing in progress
+- 2xx - ok
+- 3xx - redirect
+- 4xx - client error
+- 5xx - server error
