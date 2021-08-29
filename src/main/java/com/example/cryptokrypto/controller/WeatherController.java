@@ -7,6 +7,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -41,5 +43,14 @@ public class WeatherController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    // /create-new-weather ??
+    // /create-new-weather-and-city ??
+    // /weathers -> POST
+    @PostMapping("/weathers")
+    public WeatherDto createWeatherForecast(@RequestBody WeatherDto newWeather) {
+        log.info("trying to create new weather forecast: [{}]", newWeather);
+        return null;
     }
 }
