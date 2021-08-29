@@ -1,6 +1,7 @@
 package com.example.cryptokrypto.service;
 
 import com.example.cryptokrypto.dto.WeatherDto;
+import com.example.cryptokrypto.entity.Weather;
 import com.example.cryptokrypto.mapper.WeatherMapper;
 import com.example.cryptokrypto.repository.WeatherRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -43,5 +44,13 @@ public class WeatherService {
 
         log.info("trying to find object by id: [{}], result: [{}]", id, result);
         return result;
+    }
+
+    public WeatherDto createNewWeatherForecast(WeatherDto newWeather) {
+        Weather entityToSave = mapper.fromDtoToEntity(newWeather);
+        Weather saved = weatherRepository.save(entityToSave);
+        log.info("creating entity [{}] from provided dto [{}]", saved, newWeather);
+
+        return mapper.fromEntityToDto(saved);
     }
 }
