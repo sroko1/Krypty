@@ -6,6 +6,7 @@ import com.example.cryptokrypto.mapper.WeatherMapper;
 import com.example.cryptokrypto.repository.WeatherRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -52,5 +53,16 @@ public class WeatherService {
         log.info("creating entity [{}] from provided dto [{}]", saved, newWeather);
 
         return mapper.fromEntityToDto(saved);
+    }
+
+    @Transactional
+    public boolean deleteWeatherById(Long id) {
+        log.info("deleting weather by id: [{}]", id);
+
+        if (weatherRepository.existsById(id)) {
+            weatherRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }

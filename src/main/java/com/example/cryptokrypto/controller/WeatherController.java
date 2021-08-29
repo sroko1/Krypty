@@ -7,6 +7,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +40,7 @@ public class WeatherController {
     // /weathers/1
     // /weathers/99
     @GetMapping("/weathers/{id}")
-    public ResponseEntity<WeatherDto>  getWeatherById(@PathVariable("id") Long id) {
+    public ResponseEntity<WeatherDto> getWeatherById(@PathVariable("id") Long id) {
         log.info("getWeatherById: [{}]", id);
         var result = weatherService.findWeatherById(id);
 
@@ -64,5 +65,20 @@ public class WeatherController {
 //        new ResponseEntity<WeatherDto>(body, headers, HttpStatus.CREATED);
 
         return ResponseEntity.created(URI.create("/api/weathers/" + body.id())).body(body);
+    }
+
+    // /api/weathers/{id}
+    // 204 -> OK - no content
+    // 404 -> not found
+    @DeleteMapping("/weathers/{id}")
+    public ResponseEntity<Void> deleteWeatherForecastById(@PathVariable Long id) {
+        log.info("trying to delete weather by id: [{}]", id);
+        boolean deleted = weatherService.deleteWeatherById(id);
+//        if (deleted) {
+//            return ResponseEntity.noContent().build();
+//        } else {
+//            return ResponseEntity.notFound().build();
+//        }
+        return deleted ? ResponseEntity.noContent().build() : ResponseEntity.notFound().build();
     }
 }
