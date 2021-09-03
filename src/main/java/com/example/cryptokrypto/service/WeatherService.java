@@ -41,7 +41,7 @@ public class WeatherService {
 
     public Optional<WeatherDto> findWeatherById(Long id) {
         var result = weatherRepository.findById(id)
-                .map(weather -> mapper.fromEntityToDto(weather));
+                .map(mapper::fromEntityToDto);
 
         log.info("trying to find object by id: [{}], result: [{}]", id, result);
         return result;
