@@ -1,10 +1,12 @@
 package com.example.cryptokrypto.service;
 
 import com.example.cryptokrypto.dto.WeatherDto;
+import com.example.cryptokrypto.entity.Weather;
 import com.example.cryptokrypto.mapper.WeatherMapper;
 import com.example.cryptokrypto.repository.WeatherRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
@@ -39,9 +41,28 @@ public class WeatherService {
 
     public Optional<WeatherDto> findWeatherById(Long id) {
         var result = weatherRepository.findById(id)
-                .map(weather -> mapper.fromEntityToDto(weather));
+                .map(mapper::fromEntityToDto);
 
         log.info("trying to find object by id: [{}], result: [{}]", id, result);
         return result;
+    }
+
+    public WeatherDto createNewWeatherForecast(WeatherDto newWeather) {
+        Weather entityToSave = mapper.fromDtoToEntity(newWeather);
+        Weather saved = weatherRepository.save(entityToSave);
+        log.info("creating entity [{}] from provided dto [{}]", saved, newWeather);
+
+        return mapper.fromEntityToDto(saved);
+    }
+
+    @Transactional
+    public boolean deleteWeatherById(Long id) {
+        log.info("deleting weather by id: [{}]", id);
+
+        if (weatherRepository.existsById(id)) {
+            weatherRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
 }
