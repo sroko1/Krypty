@@ -86,14 +86,14 @@ public class WeatherController {
 
     // replace
     @PutMapping("/weathers/{id}")
-    public void replaceWeatherForecast(@PathVariable("id") Long id, @RequestBody WeatherDto objectToReplace) {
-
+    public WeatherDto replaceWeatherForecast(@PathVariable("id") Long id, @RequestBody WeatherDto objectToReplace) {
+        return null;
     }
 
     // partial update
     @PatchMapping("/weathers/{id}")
-    public void updateWeatherForecast(@PathVariable("id") Long id, @RequestBody WeatherDto updateDto) {
-
+    public WeatherDto updateWeatherForecast(@PathVariable("id") Long id, @RequestBody WeatherDto updateDto) {
+        return null;
     }
 
 }
