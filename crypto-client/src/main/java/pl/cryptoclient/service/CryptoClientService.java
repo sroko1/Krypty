@@ -36,7 +36,6 @@ public class CryptoClientService {
     }
 
     public List<ServerResponseDto> readResponseFromServer() {
-        // TODO: explain type erasure
         ServerResponseDto[] resultArray = restTemplate.getForObject(url, ServerResponseDto[].class);
         List<ServerResponseDto> result = Arrays.asList(resultArray);
         log.info("response from server: {}", result);
