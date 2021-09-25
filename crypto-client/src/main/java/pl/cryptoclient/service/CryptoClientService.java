@@ -16,10 +16,14 @@ public class CryptoClientService {
 
     private final RestTemplate restTemplate;
     private final String url;
+    private final String reposUrl;
 
     public CryptoClientService(final RestTemplate restTemplate,
-                               @Value("${connection.weather.url}") final String url) {
+                               @Value("${connection.weather.url}") final String url,
+                               @Value("${connection.github.url}") final String reposUrl) {
+        this.reposUrl = reposUrl;
         log.info("connection url: [{}]", url);
+        log.info("github connection url: [{}]", reposUrl);
         this.restTemplate = restTemplate;
         this.url = url;
     }
@@ -39,6 +43,13 @@ public class CryptoClientService {
         ServerResponseDto[] resultArray = restTemplate.getForObject(url, ServerResponseDto[].class);
         List<ServerResponseDto> result = Arrays.asList(resultArray);
         log.info("response from server: {}", result);
+        return result;
+    }
+
+    public String readGithubRepos() {
+        String result = restTemplate.getForObject(reposUrl, String.class);
+        log.info("repos: [{}]", result);
+
         return result;
     }
 }

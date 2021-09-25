@@ -23,6 +23,7 @@ public class WebWeatherController {
         log.info("mainWeatherForecastView()");
         model.addAttribute("server_response", cryptoClientService.readWeatherForecastsAsString());
         model.addAttribute("response", cryptoClientService.readResponseFromServer());
+        model.addAttribute("repos", cryptoClientService.readGithubRepos());
 
         return "main-page";
     }
