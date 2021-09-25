@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>My weather</title>
+</head>
+<body>
+  <p>My weather</p>
+  <p>Response as string</p>
+  <p th:text="${server_response}">Dummy response</p>
+
+  <table>
+    <thead>
+      <tr>
+        <td>Miasto</td>
+        <td>Temperatura</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr th:each="forecast: ${response}">
+        <td th:text="${forecast.myCity}">Londek</td>
+        <td th:text="${forecast.tempInCelsius}">50</td>
+      </tr>
+    </tbody>
+  </table>
+</body>
+</html>

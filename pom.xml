@@ -58,6 +58,10 @@
         </dependency>
     </dependencies>
 
+    <modules>
+        <module>crypto-client</module>
+    </modules>
+
     <build>
         <plugins>
             <plugin>
