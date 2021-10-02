@@ -31,9 +31,12 @@ public class CollectionsClassTest {
     @Test
     void genericCollectionClassTest() {
         ArrayList<String> strings = new ArrayList<>();
+//        strings.add(new Dog());
+//        strings.add((String)new Dog()); // this is how compiler works
         System.out.println("strings class: " + strings.getClass()); // java.util.ArrayList<String> ???
         addElementToCollection(strings);
-        String name = strings.get(0);
+//        String name = strings.get(0);
+//        String name2 = (String)strings.get(0); // this is how compiler works
 
         ArrayList objects = new ArrayList();
         System.out.println("objects class: " + objects.getClass());
