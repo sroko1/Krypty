@@ -1,5 +1,6 @@
 package com.example.cryptokrypto.service;
 
+import com.example.cryptokrypto.dto.GithubRepoV2;
 import com.example.cryptokrypto.dto.GithubRepository;
 import com.example.cryptokrypto.dto.GithubRepositoryWrapper;
 import lombok.extern.slf4j.Slf4j;
@@ -54,9 +55,18 @@ public class GithubService implements CommandLineRunner {
         return Collections.emptyList();
     }
 
-        @Override
+    public List<GithubRepoV2> readCustomGitHubRepo() {
+        var response = restTemplate.getForObject(githubUrl, GithubRepoV2[].class);
+        var result = Arrays.asList(response);
+
+        log.info("readCustomGitHubRepo - result: {}", result);
+        return result;
+    }
+
+    @Override
     public void run(String... args) throws Exception {
         readGitHubRepos();
+        readCustomGitHubRepo();
 //        readGitHubReposV2();
     }
 }
