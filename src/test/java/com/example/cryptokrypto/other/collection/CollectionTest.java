@@ -15,6 +15,7 @@ import java.util.Objects;
 import java.util.Set;
 import java.util.TreeMap;
 import java.util.TreeSet;
+import java.util.stream.Stream;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -187,5 +188,28 @@ class CollectionTest {
         // "80text5050"
         System.out.println(s);
         assertEquals("80text100", s);
+    }
+
+    @Test
+    void multilineStringTest() {
+        String multi = """
+                    Ala ma kota
+                  i kot ma Ale
+                """;
+        String oldMulti = ""
+                + "    Ala ma kota\n"
+                + "  i kot ma Ale\n";
+
+        assertEquals(multi, oldMulti);
+    }
+
+    @Test
+    void lazyTest() {
+        Stream.of("one", "four")
+                .mapToInt(value -> {
+                    System.out.println("mapping....");
+                    return value.length();
+                })
+                .forEach(System.out::println);
     }
 }
