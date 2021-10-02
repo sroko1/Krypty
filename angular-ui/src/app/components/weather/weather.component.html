@@ -1,0 +1,17 @@
+<p>My name is: {{name}}</p>
+<table>
+  <thead>
+  <tr>
+    <td>Id.</td>
+    <td>Miasto</td>
+    <td>Temperatura</td>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let forecast of response">
+    <td>{{forecast.id}}</td>
+    <td>{{forecast.moje_miasto}}</td>
+    <td>{{forecast.temp_in_cs}}</td>
+  </tr>
+  </tbody>
+</table>
