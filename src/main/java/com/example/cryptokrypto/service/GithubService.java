@@ -50,9 +50,11 @@ public class GithubService implements CommandLineRunner {
 
     // TODO:
     public List<GithubRepository> readGitHubReposV3() {
-        var responseFromServer = restTemplate.exchange(githubUrl, HttpMethod.GET, null,
-                ParameterizedTypeReference.forType(GithubRepository[].class));
-        return Collections.emptyList();
+        var responseFromServer =
+                restTemplate.exchange(githubUrl, HttpMethod.GET, null,
+                new ParameterizedTypeReference<List<GithubRepository>>() {
+                });
+        return responseFromServer.getBody();
     }
 
     public List<GithubRepoV2> readCustomGitHubRepo() {
@@ -67,6 +69,6 @@ public class GithubService implements CommandLineRunner {
     public void run(String... args) throws Exception {
         readGitHubRepos();
         readCustomGitHubRepo();
-//        readGitHubReposV2();
+        log.info("->" + readGitHubReposV3());
     }
 }
