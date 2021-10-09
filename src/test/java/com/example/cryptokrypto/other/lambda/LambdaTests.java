@@ -98,6 +98,20 @@ public class LambdaTests {
         decision = advisor.shouldIBuyThisCar(mazda, car -> car.getBrand().equals("Mazda"));
         assertTrue(decision);
     }
+
+    @Test
+    public void methodReferenceTest() {
+        // with lambda
+        // convert Person -> age
+        // println
+        persons.stream()
+                .map(person -> person.age()) // Integer apply(Person p)
+                .forEach(person -> System.out.println(person)); // void accept(Person p)
+        // method reference
+        persons.stream()
+                .map(Person::age) // Integer apply(Person p)
+                .forEach(System.out::println);
+    }
 }
 
 class AdultsOnly implements Predicate<Person> {
