@@ -23,7 +23,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@CrossOrigin("*")
+@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/api")
 @Slf4j
