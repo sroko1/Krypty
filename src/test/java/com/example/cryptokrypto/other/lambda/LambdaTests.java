@@ -1,13 +1,18 @@
 package com.example.cryptokrypto.other.lambda;
 
+import lombok.Builder;
+import lombok.Data;
+import lombok.Value;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class LambdaTests {
 
@@ -60,6 +65,38 @@ public class LambdaTests {
         //}
 
         assertEquals(28, sum);
+//        List<int> integers;
+//        List<Integer> integers;
+
+        int sum2 = persons.stream()
+                .mapToInt(person -> person.age())
+                .sum();
+
+        assertEquals(28, sum2);
+    }
+
+    @Test
+    public void carTest() {
+        CarDealer advisor = new CarDealer();
+        Car passat = Car.builder()
+                .brand("VW")
+                .model("Passat")
+                .color("blue")
+                .production(LocalDate.of(2021, 1, 1))
+                .build();
+
+        boolean decision = advisor.shouldIBuyThisCar(passat);
+        assertTrue(decision);
+
+        Car mazda = Car.builder()
+                .brand("Mazda")
+                .model("VI")
+                .color("red")
+                .production(LocalDate.of(2010, 1, 15))
+                .build();
+
+        decision = advisor.shouldIBuyThisCar(mazda, car -> car.getBrand().equals("Mazda"));
+        assertTrue(decision);
     }
 }
 
@@ -69,4 +106,13 @@ class AdultsOnly implements Predicate<Person> {
     public boolean test(Person o) {
         return o.age() >= 18;
     }
+}
+
+@Data
+@Builder
+class Car {
+    String brand;
+    String model;
+    LocalDate production;
+    String color;
 }
