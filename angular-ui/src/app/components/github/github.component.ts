@@ -9,6 +9,7 @@ import { GithubRepo } from '../../models/github.data';
 })
 export class GithubComponent implements OnInit {
   repos: GithubRepo[] = [];
+  displayedColumns = [ 'fullName', 'login', 'type', 'forksUrl'];
 
   constructor(private github: GithubService) { }
 
