@@ -1,17 +1,26 @@
-<p>My name is: {{name}}</p>
-<table>
-  <thead>
-  <tr>
-    <td>Id.</td>
-    <td>Miasto</td>
-    <td>Temperatura</td>
-  </tr>
-  </thead>
-  <tbody>
-  <tr *ngFor="let forecast of response">
-    <td>{{forecast.id}}</td>
-    <td>{{forecast.moje_miasto}}</td>
-    <td>{{forecast.temp_in_cs}}</td>
-  </tr>
-  </tbody>
+<table mat-table [dataSource]="myData" class="mat-elevation-z8">
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Id Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> Id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- City Column -->
+  <ng-container matColumnDef="city">
+    <th mat-header-cell *matHeaderCellDef> Miasto </th>
+    <td mat-cell *matCellDef="let element"> {{element.moje_miasto}} </td>
+  </ng-container>
+
+  <!-- Temperature Column -->
+  <ng-container matColumnDef="temp">
+    <th mat-header-cell *matHeaderCellDef> Temperatura </th>
+    <td mat-cell *matCellDef="let element"> {{element.temp_in_cs}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
 </table>
+
