@@ -12,11 +12,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { RouterModule, Routes } from '@angular/router';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { githubUrl, weatherUrl } from './models/links';
 
 const routes: Routes = [
-  { path: 'github', component: GithubComponent },
-  { path: 'pogoda', component: WeatherComponent },
-  { path: '', redirectTo: '/github', pathMatch: 'full'},
+  { path: githubUrl, component: GithubComponent },
+  { path: weatherUrl, component: WeatherComponent },
+  { path: '', redirectTo: weatherUrl, pathMatch: 'full'},
   { path: '**', component: NotFoundComponent }
 ]
 
