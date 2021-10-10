@@ -12,9 +12,10 @@
     <td mat-cell *matCellDef="let element"> {{element.owner.login}} </td>
   </ng-container>
 
+  <!-- Temperature Column -->
   <ng-container matColumnDef="type">
     <th mat-header-cell *matHeaderCellDef> Typ </th>
-    <td mat-cell *matCellDef="let element"> {{element.owner.type}} </td>
+    <td mat-cell *matCellDef="let element"> {{element.ownertype}} </td>
   </ng-container>
 
   <ng-container matColumnDef="forksUrl">
