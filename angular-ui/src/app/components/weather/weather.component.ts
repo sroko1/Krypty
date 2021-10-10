@@ -11,6 +11,8 @@ export class WeatherComponent implements OnInit {
   name: string = ""
   response!: Array<SpringWeatherResponse>
   // response!: SpringWeatherResponse[]
+  displayedColumns: string[] = ['id', 'city', 'temp'];
+  myData: Array<SpringWeatherResponse> = []
 
   constructor(private weatherService: WeatherService) { }
 
@@ -19,6 +21,7 @@ export class WeatherComponent implements OnInit {
     this.weatherService.readWeatherForecasts()
       .subscribe(value => {
         this.response = value
+        this.myData = value
         console.log(`received value: ${value}`)
       })
     console.log('ngOnInit completed');

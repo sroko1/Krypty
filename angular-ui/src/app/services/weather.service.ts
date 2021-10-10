@@ -17,17 +17,5 @@ export class WeatherService {
 
   readWeatherForecasts(): Observable<Array<SpringWeatherResponse>> {
     return this.http.get<Array<SpringWeatherResponse>>(weatherApi)
-  //   let response: Array<SpringWeatherResponse> = []
-  //   response.push({
-  //     moje_miasto: 'Olsztyn-Zdrój',
-  //     temp_in_cs: 50,
-  //     id: 1
-  //   })
-  //   response.push({
-  //     moje_miasto: 'Poznan',
-  //     temp_in_cs: 20,
-  //     id: 2
-  //   })
-  //   return of(response)
   }
 }
